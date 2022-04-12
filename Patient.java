@@ -1,12 +1,12 @@
 package com.company;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Patient extends Person {
-    ArrayList<Termin> termine = new ArrayList<>();
-    ArrayList<Behandlung> vergangeneBehandlungen = new ArrayList<>();
+    private ArrayList<Termin> termine = new ArrayList<>();
+    private ArrayList<Behandlung> vergangeneBehandlungen = new ArrayList<>();
 
     public Patient(int id, String name, String nachname, int tel) {
         super(id, name, nachname, tel);
@@ -20,7 +20,7 @@ public class Patient extends Person {
         termine.remove(searchTermin(t.getDatum(),t.getZeit()));
     }
 
-    public Termin searchTermin(Date datum, LocalTime zeit) {
+    public Termin searchTermin(LocalDate datum, LocalTime zeit) {
         Termin ter = new Termin(datum,zeit);
         for (Termin t : termine) {
             if (t.equals(ter)){
@@ -40,6 +40,10 @@ public class Patient extends Person {
 
     public ArrayList<Behandlung> getVergangeneBehandlungen() {
         return vergangeneBehandlungen;
+    }
+
+    public void deleteBehandlung(Behandlung b){
+        vergangeneBehandlungen.remove(b);
     }
 
     public void editPatient(String name, String nachname) {

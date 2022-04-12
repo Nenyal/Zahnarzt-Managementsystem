@@ -1,18 +1,18 @@
 package com.company;
 
 import java.time.LocalTime;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Termin {
-    private Date datum;
+    private LocalDate datum;
     private LocalTime zeit;
 
-    public Termin(Date datum, LocalTime zeit) {
+    public Termin(LocalDate datum, LocalTime zeit) {
         this.datum = datum;
         this.zeit = zeit;
     }
 
-    public Date getDatum() {
+    public LocalDate getDatum() {
         return datum;
     }
 
@@ -20,7 +20,7 @@ public class Termin {
         return zeit;
     }
 
-    public void editTermin(Date datum) {
+    public void editTermin(LocalDate datum) {
         this.datum = datum;
     }
 
