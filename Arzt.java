@@ -1,9 +1,11 @@
 package com.company;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Arzt extends Person {
-    ArrayList<Termin> termine = new ArrayList<>();
+    private ArrayList<Termin> termine = new ArrayList<>();
 
     public Arzt(int id, String name, String nachname, int tel) {
         super(id, name, nachname, tel);
@@ -20,6 +22,16 @@ public class Arzt extends Person {
 
     public void addTermin(Termin t) {
         termine.add(t);
+    }
+
+    public Termin searchTermin(LocalDate datum, LocalTime zeit) {
+        Termin ter = new Termin(datum,zeit);
+        for (Termin t : termine) {
+            if (t.equals(ter)){
+                return t;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Termin> getTermine() {

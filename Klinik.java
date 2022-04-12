@@ -2,10 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Dentist {
-    private final ArrayList<Operation> operationen = new ArrayList<>();
-    private final ArrayList<Patient> patienten = new ArrayList<>();
-    private final ArrayList<Arzt> arzte = new ArrayList<>();
+public class Klinik {
+    private ArrayList<Operation> operationen = new ArrayList<>();
+    private ArrayList<Patient> patienten = new ArrayList<>();
+    private ArrayList<Arzt> arzte = new ArrayList<>();
 
     public void addOperation(int id, String name, float kost) {
         operationen.add(new Operation(id, name, kost));
