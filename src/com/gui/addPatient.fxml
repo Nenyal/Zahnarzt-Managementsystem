@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.AddPatientController">
+   <children>
+      <Label layoutX="148.0" layoutY="167.0" text="Name" />
+      <Label layoutX="148.0" layoutY="212.0" text="Nachname" />
+      <Label layoutX="148.0" layoutY="251.0" text="Telefonnummer" />
+      <Label layoutX="148.0" layoutY="132.0" text="ID" />
+      <TextField fx:id="idaddpatienttxt" layoutX="246.0" layoutY="128.0" prefHeight="25.0" prefWidth="206.0" promptText="Geben Sie die ID des Patients ein" />
+      <TextField fx:id="nameaddpatienttxt" layoutX="246.0" layoutY="163.0" prefHeight="25.0" prefWidth="206.0" promptText="Geben Sie den Namen ein" />
+      <TextField fx:id="nnameaddpatienttxt" layoutX="246.0" layoutY="208.0" prefHeight="25.0" prefWidth="206.0" promptText="Geben Sie den Nachnamen ein" />
+      <TextField fx:id="telnumaddpatienttxt" layoutX="246.0" layoutY="247.0" prefHeight="25.0" prefWidth="200.0" promptText="Geben Sie die Telefonnummer ein" />
+      <Button fx:id="addPatientbtn" layoutX="274.0" layoutY="288.0" mnemonicParsing="false" onAction="#addPatient" text="Button" />
+   </children>
+</AnchorPane>

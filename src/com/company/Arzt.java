@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Arzt extends Person {
     private ArrayList<Termin> termine = new ArrayList<>();
 
-    public Arzt(int id, String name, String nachname, int tel) {
+    public Arzt(int id, String name, String nachname, String tel) {
         super(id, name, nachname, tel);
     }
 
@@ -16,7 +16,7 @@ public class Arzt extends Person {
         this.setNachname(nachname);
     }
 
-    public void editArzt(int tel) {
+    public void editArzt(String tel) {
         this.setTelefonNummer(tel);
     }
 

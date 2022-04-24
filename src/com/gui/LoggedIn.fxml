@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ControllerLoggedIn">
+   <children>
+      <Button fx:id="redaddpatientbtn" layoutX="138.0" layoutY="83.0" mnemonicParsing="false" onAction="#redaddpatient" text="Add Patient" />
+      <VBox prefHeight="400.0" prefWidth="114.0" style="-fx-background-color: cyan;" />
+      <Button fx:id="showpatientenbtn" layoutX="253.0" layoutY="83.0" mnemonicParsing="false" onAction="#redpatienten" text="View Patienten" />
+   </children>
+</AnchorPane>
