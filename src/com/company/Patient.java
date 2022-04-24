@@ -8,7 +8,7 @@ public class Patient extends Person {
     private ArrayList<Termin> termine = new ArrayList<>();
     private ArrayList<Behandlung> vergangeneBehandlungen = new ArrayList<>();
 
-    public Patient(int id, String name, String nachname, int tel) {
+    public Patient(int id, String name, String nachname, String tel) {
         super(id, name, nachname, tel);
     }
 
@@ -51,7 +51,7 @@ public class Patient extends Person {
         this.setNachname(nachname);
     }
 
-    public void editPatient(int tel) {
+    public void editPatient(String tel) {
         this.setTelefonNummer(tel);
     }
 }
