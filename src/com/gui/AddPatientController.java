@@ -42,7 +42,7 @@ public class AddPatientController {
         String nname = nnameaddpatienttxt.getText();
         String tn = telnumaddpatienttxt.getText();
         Importer im = new Importer();
-        if (id == 0 || nametxt.equals("") || nname.equals("")) {
+        if (nametxt.equals("") || nname.equals("")) {
             JOptionPane.showMessageDialog(null,"Fehler beim Hinzufuegen");
         } else {
             try {
@@ -61,7 +61,7 @@ public class AddPatientController {
                     pst.setString(3,nname);
                     pst.setString(4,tn);
                     pst.executeUpdate();
-                    JOptionPane.showMessageDialog(null,"Patient hinzugefuegt");
+                    JOptionPane.showMessageDialog(null,"Patient hinzugefuegt!");
                 }
             } catch (ClassNotFoundException | SQLException e){
                 throw new RuntimeException(e);
@@ -69,5 +69,19 @@ public class AddPatientController {
 
         }
 
+    }
+    @FXML
+    void redLoggedIn(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("LoggedIn.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.setTitle("ZahnarztklinikAPP Management");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
