@@ -2,16 +2,20 @@ package com.gui;
 
 import com.company.Patient;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewPatientenController implements Initializable {
+    public ImageView imageView;
     PatientDAO pdao = new PatientDAO();
     ObservableList<Patient> list;
 
@@ -44,5 +48,13 @@ public class ViewPatientenController implements Initializable {
     private void loadData() {
         list = pdao.getPatienten();
         patientView.getItems().addAll(list);
+    }
+    @FXML
+    private void redDashboard(ActionEvent event){
+        try {
+            App.changeStage(event,"Dashboard.fxml","Dashboard");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
