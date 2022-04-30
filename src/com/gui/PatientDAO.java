@@ -1,48 +1,24 @@
-package com.company;
+package com.gui;
 
-import java.sql.*;
+import com.company.*;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-
-public class DBImporter {
-    static String jdbcURL = "jdbc:mysql://localhost:3306/zahnarztappdb";
-    static String username = "root";
-    static String password = "7394";
+// Patient Data Access Object
+public class PatientDAO {
     Connection con;
 
     PreparedStatement pst;
 
     ResultSet rs;
 
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(jdbcURL, username, password);
-    }
-
-    public void ShowError(SQLException exception) {
-        System.out.printf("Error: " + exception.getMessage());
-        System.out.printf("Error Code: " + exception.getErrorCode());
-    }
-
-    public User getUserObjekt(String uname, String pass) {
-        if (uname.equals("") || pass.equals("")) {
-            return null;
-        } else {
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = this.getConnection();
-                pst = con.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
-                pst.setString(1, uname);
-                pst.setString(2, pass);
-                rs = pst.executeQuery();
-                if (rs.next()) {
-                    return new User(uname, pass);
-                } else {
-                    return null;
-                }
-            } catch (ClassNotFoundException | SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
+    Database db = new Database();
 
     public Patient getPatientObject(int id) {
         if (id == 0) {
@@ -50,7 +26,7 @@ public class DBImporter {
         } else {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                con = this.getConnection();
+                con = db.getConnection();
                 pst = con.prepareStatement("SELECT * FROM patient WHERE PatientID=?");
                 pst.setInt(1, id);
                 rs = pst.executeQuery();
@@ -64,11 +40,11 @@ public class DBImporter {
             }
         }
     }
-    public ArrayList<Patient> getPatienten(){
-        ArrayList<Patient> patienten = new ArrayList<>();
+    public ObservableList<Patient> getPatienten(){
+        ObservableList<Patient> patienten = FXCollections.observableArrayList();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = this.getConnection();
+            con = db.getConnection();
             pst = con.prepareStatement("SELECT * FROM patient");
             rs = pst.executeQuery();
             while (rs.next()){
@@ -84,7 +60,7 @@ public class DBImporter {
     public int addPatient(int id, String name,String nname,String tn){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = this.getConnection();
+            con = db.getConnection();
             pst = con.prepareStatement("SELECT COUNT(*) FROM patient WHERE PatientID=?");
             pst.setInt(1,id);
             rs = pst.executeQuery();
