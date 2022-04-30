@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.AddUserController">
+
+    <VBox prefHeight="400.0" prefWidth="100.0" style="-fx-background-color: RGB(7,16,80);" />
+    <ImageView fx:id="imageView" fitHeight="380.0" fitWidth="380.0" layoutX="115.0" layoutY="16.0" opacity="0.2">
+        <Image url="@img/dentist.png" />
+    </ImageView>
+    <Label layoutX="125.0" layoutY="157.0" text="ID : " />
+    <Label layoutX="125.0" layoutY="187.0" text="Username :" />
+    <Label layoutX="125.0" layoutY="217.0" text="Password :" />
+    <Label layoutX="125.0" layoutY="247.0" text="Erlaubnis :" />
+    <TextField fx:id="idaddusertxt" layoutX="225.0" layoutY="155.0" prefHeight="25.0" prefWidth="250.0" promptText="Geben Sie die ID des Users ein" />
+    <TextField fx:id="usernameaddusertxt" layoutX="225.0" layoutY="185.0" prefHeight="25.0" prefWidth="250.0" promptText="Geben Sie den Username ein" />
+    <PasswordField fx:id="passwordadduser" layoutX="226.0" layoutY="215.0" prefHeight="25.0" prefWidth="250.0" promptText="Geben Sie den Password ein" />
+    <ChoiceBox fx:id="choicePerm" layoutX="225.0" layoutY="245.0" prefHeight="25.0" prefWidth="250.0" />
+    <Button fx:id="adduserbtn" layoutX="368.0" layoutY="285.0" mnemonicParsing="false" onAction="#addUser" text="Bestaetigen" />
+    <Button fx:id="absagenbtn" layoutX="250.0" layoutY="285.0" mnemonicParsing="false" onAction="#redDashboard" prefHeight="25.0" prefWidth="78.0" text="Absagen" />
+</AnchorPane>

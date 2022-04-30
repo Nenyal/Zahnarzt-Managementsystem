@@ -6,7 +6,8 @@ module com {
         requires mysql.connector.java;
 
         exports com.gui;
+        exports com.company;
 
-        opens com.gui to
-        javafx.fxml;
+        opens com.gui to javafx.fxml;
+        opens com.company to javafx.fxml;
         }

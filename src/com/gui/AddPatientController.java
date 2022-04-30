@@ -2,20 +2,12 @@ package com.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
-import javax.swing.JOptionPane;
-
-import com.company.*;
-
+import javax.swing.*;
 import java.io.IOException;
-import java.sql.*;
-
-import javafx.stage.Stage;
 
 public class AddPatientController {
     @FXML
@@ -28,24 +20,26 @@ public class AddPatientController {
     public TextField telnumaddpatienttxt;
     @FXML
     public Button addPatientbtn;
-
-    Connection con;
-
-    PreparedStatement pst;
-
-    ResultSet rs;
+    public ImageView imageView;
+    public Button absagenbtn;
 
     @FXML
-    void addPatient(ActionEvent event) {
-        int id = Integer.parseInt(idaddpatienttxt.getText());
+    void addPatient() {
+        int id = 0;
+        try{
+            id = Integer.parseInt(idaddpatienttxt.getText());
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
+            return;
+        }
         String name = nameaddpatienttxt.getText();
         String nname = nnameaddpatienttxt.getText();
         String tn = telnumaddpatienttxt.getText();
-        DBImporter im = new DBImporter();
         if (id == 0 || name.equals("") || nname.equals("") || tn.equals("")) {
-            JOptionPane.showMessageDialog(null, "Fehler beim Hinzufuegen");
+            JOptionPane.showMessageDialog(null, "Einige Felder sind leer!");
         } else {
-            int result = im.addPatient(id, name, nname, tn);
+            PatientDAO pdao = new PatientDAO();
+            int result = pdao.addPatient(id, name, nname, tn);
             if (result == -1) JOptionPane.showMessageDialog(null, "Patient existiert!");
             if (result == 0) {
                 JOptionPane.showMessageDialog(null, "Patient hinzugefuegt!");
@@ -58,15 +52,9 @@ public class AddPatientController {
     }
 
     @FXML
-    void redLoggedIn(ActionEvent event) {
+    void redDashboard(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("LoggedIn.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.setTitle("ZahnarztklinikAPP Management");
-            stage.setScene(scene);
-            stage.show();
+            App.changeStage(event, "Dashboard.fxml", "Dashboard");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
