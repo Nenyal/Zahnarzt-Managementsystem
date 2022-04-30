@@ -3,6 +3,7 @@ package com.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
@@ -13,6 +14,10 @@ public class ControllerDashboard {
     public Button showpatientenbtn;
     @FXML
     public Button adduserbtn;
+    @FXML
+    public ImageView imageView;
+    @FXML
+    public Button redLoginbtn;
 
     @FXML
     void redaddpatient(ActionEvent event) {
@@ -36,6 +41,14 @@ public class ControllerDashboard {
     void redpatienten(ActionEvent event) {
         try {
             App.changeStage(event, "viewPatienten.fxml", "Patienten ansehen");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    private void redLogin(ActionEvent event){
+        try {
+            App.changeStage(event,"Login.fxml","ZahnarztAPP");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

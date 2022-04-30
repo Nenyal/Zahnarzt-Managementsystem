@@ -44,10 +44,8 @@ public class ControllerLogIn implements Initializable {
         } else {
             try {
                 if (user.getPermission().equals("admin")) {
-                    JOptionPane.showMessageDialog(null, "Einloggen erfolgreich!");
                     App.changeStage(event, "Dashboard.fxml", "ZahnarztAPP Dashboard");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Einloggen erfolgreich!"); // FARKLI SAYFAYA YONLENDIRECEK @@@
+                } else {    // FARKLI SAYFAYA YONLENDIRECEK @@@
                     App.changeStage(event, "Dashboard.fxml", "ZahnarztAPP Dashboard");
                 }
             } catch (IOException e) {
