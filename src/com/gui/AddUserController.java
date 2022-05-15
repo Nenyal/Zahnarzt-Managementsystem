@@ -53,9 +53,9 @@ public class AddUserController implements Initializable {
         } else {
             UserDAO udao = new UserDAO();
             int result = udao.saveUser(id, un, pass, perm);
-            if (result == -1) JOptionPane.showMessageDialog(null, "Patient existiert!");
+            if (result == -1) JOptionPane.showMessageDialog(null, "User existiert!");
             if (result == 0) {
-                JOptionPane.showMessageDialog(null, "Patient hinzugefuegt!");
+                JOptionPane.showMessageDialog(null, "User hinzugefuegt!");
                 idaddusertxt.setText("");
                 usernameaddusertxt.setText("");
                 passwordadduser.setText("");

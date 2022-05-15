@@ -34,5 +34,7 @@
          </font>
       </Text>
       <Button fx:id="redLoginbtn" layoutX="475.0" layoutY="360.0" mnemonicParsing="false" onAction="#redLogin" text="Zurück zum Login" />
+      <Button fx:id="redaddarztbtn" layoutX="225.0" layoutY="245.0" mnemonicParsing="false" onAction="#redAddArzt" prefHeight="25.0" prefWidth="151.0" text="Arzt registrieren" />
+      <Button layoutX="225.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Aerzte ansehen" />
    </children>
 </AnchorPane>
