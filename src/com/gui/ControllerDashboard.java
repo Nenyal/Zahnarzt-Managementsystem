@@ -53,4 +53,8 @@ public class ControllerDashboard {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    private void redAddArzt(){
+
+    }
 }
