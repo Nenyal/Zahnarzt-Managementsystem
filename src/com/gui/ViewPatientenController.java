@@ -5,7 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
@@ -27,13 +30,21 @@ public class ViewPatientenController implements Initializable {
     public Button refreshbtn;
     @FXML
     public Button getPatientenNamebtn;
+    @FXML
     public TextField patientidtxt;
+    @FXML
     public TextField nametxt;
+    @FXML
     public TextField nachnametxt;
+    @FXML
     public TextField telnotxt;
+    @FXML
     public Button updatebtn;
+    @FXML
     public Button deletebtn;
+    @FXML
     public Button addbtn;
+    @FXML
     PatientDAO pdao = new PatientDAO();
     ObservableList<Patient> list;
 
@@ -181,6 +192,13 @@ public class ViewPatientenController implements Initializable {
                 refreshTabelle();
             }
         }
+
+    }
+    @FXML
+    public void etwas(){
+        //TableView.TableViewSelectionModel<Patient> selectionModel = patientView.getSelectionModel();
+        //ObservableList<Patient> selectedItems = selectionModel.getSelectedItems();
+        System.out.println(patientView.getSelectionModel().getSelectedItem());
 
     }
 }

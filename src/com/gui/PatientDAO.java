@@ -1,7 +1,6 @@
 package com.gui;
 
 import com.company.*;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 // Patient Data Access Object
 public class PatientDAO {
     Connection con;

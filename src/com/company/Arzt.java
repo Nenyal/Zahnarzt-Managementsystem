@@ -24,8 +24,8 @@ public class Arzt extends Person {
         termine.add(t);
     }
 
-    public Termin searchTermin(LocalDate datum, LocalTime zeit) {
-        Termin ter = new Termin(datum,zeit);
+    public Termin searchTermin(LocalDate datum, LocalTime zeit, int pid) {
+        Termin ter = new Termin(datum,zeit,this.getId(),pid);
         for (Termin t : termine) {
             if (t.equals(ter)){
                 return t;
