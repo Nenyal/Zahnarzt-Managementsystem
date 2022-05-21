@@ -35,6 +35,14 @@ public class ControllerDashboard {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    void redarzte(ActionEvent event) {
+        try {
+            App.changeStage(event, "viewArzte.fxml", "Arzte ansehen");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @FXML
