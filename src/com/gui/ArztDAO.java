@@ -147,7 +147,7 @@ public class ArztDAO {
             if (!arztExists(id)){
                 return -1;
             } else {
-                pst = con.prepareStatement("DELETE FROM arzt WHERE PatientID=?");
+                pst = con.prepareStatement("DELETE FROM arzt WHERE ArztID=?");
                 pst.setInt(1,id);
                 pst.executeUpdate();
                 return 0;

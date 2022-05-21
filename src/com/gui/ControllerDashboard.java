@@ -62,6 +62,14 @@ public class ControllerDashboard {
         }
     }
     @FXML
+    private void redTerminErstellen(ActionEvent event){
+        try {
+            App.changeStage(event,"terminOperationen.fxml","ZahnarztAPP");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
     private void redAddArzt(){
 
     }

@@ -17,11 +17,11 @@ public class Patient extends Person {
     }
 
     public void deleteTermin(Termin t) {
-        termine.remove(searchTermin(t.getDatum(),t.getZeit()));
+        termine.remove(searchTermin(t.getDatum(),t.getZeit(),t.getArztID()));
     }
 
-    public Termin searchTermin(LocalDate datum, LocalTime zeit) {
-        Termin ter = new Termin(datum,zeit);
+    public Termin searchTermin(LocalDate datum, LocalTime zeit, int aid) {
+        Termin ter = new Termin(datum,zeit,aid,this.getId());
         for (Termin t : termine) {
             if (t.equals(ter)){
                 return t;
