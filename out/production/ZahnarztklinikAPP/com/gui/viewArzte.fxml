@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: RGB(230,230,230);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.ViewArzteController">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="80.0" style="-fx-background-color: RGB(7,16,80);" />
+        <ImageView fx:id="imageView" fitHeight="380.0" fitWidth="380.0" layoutX="115.0" layoutY="16.0" opacity="0.2">
+            <image>
+                <Image url="@img/dentist.png" />
+            </image>
+        </ImageView>
+        <TableView fx:id="arztView" layoutX="229.0" layoutY="77.0" opacity="0.9" prefHeight="277.0" prefWidth="361.0">
+            <columns>
+                <TableColumn fx:id="ids" prefWidth="30.0" text="ID" />
+                <TableColumn fx:id="namen" prefWidth="100.0" text="Name" />
+                <TableColumn fx:id="nachnamen" minWidth="0.0" prefWidth="120.0" text="Nachname" />
+                <TableColumn fx:id="telefonnummern" minWidth="0.0" prefWidth="111.0" text="Telefonnummer" />
+            </columns>
+        </TableView>
+        <Button layoutX="450.0" layoutY="365.0" mnemonicParsing="false" onAction="#redDashboard" text="Zurück zum Dashboard" />
+        <TextField fx:id="getArztID" layoutX="250.0" layoutY="47.0" prefHeight="25.0" prefWidth="65.0" promptText="ArztID" />
+        <TextField fx:id="getArztName" layoutX="420.0" layoutY="47.0" prefHeight="25.0" prefWidth="65.0" promptText="Name" />
+        <Button fx:id="getArzteIDbtn" layoutX="320.0" layoutY="47.0" mnemonicParsing="false" onAction="#getArzteID" prefHeight="25.0" prefWidth="48.0" text="Suche" />
+        <Button fx:id="getArzteNamebtn" layoutX="490.0" layoutY="47.0" mnemonicParsing="false" onAction="#getArzteName" text="Suche" />
+        <Text layoutX="229.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID : " />
+        <Text layoutX="379.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name : " />
+        <VBox layoutX="129.0" layoutY="120.0" prefHeight="113.0" prefWidth="100.0" spacing="4.0">
+            <children>
+                <TextField fx:id="arztidtxt" promptText="ArztID" />
+                <TextField fx:id="nametxt" promptText="Name" />
+                <TextField fx:id="nachnametxt" prefHeight="25.0" prefWidth="131.0" promptText="Nachname" />
+                <TextField fx:id="telnotxt" prefHeight="25.0" prefWidth="131.0" promptText="Telefonnummer" />
+            </children>
+        </VBox>
+        <Button fx:id="refreshbtn" layoutX="229.0" layoutY="365.0" mnemonicParsing="false" onAction="#refreshTabelle" prefHeight="25.0" prefWidth="131.0" text="Tabelle auffrischen" />
+        <Button fx:id="updatebtn" layoutX="137.0" layoutY="265.0" mnemonicParsing="false" onAction="#updateArzt" prefHeight="25.0" prefWidth="84.0" text="Aktualisieren" />
+        <Button fx:id="deletebtn" layoutX="137.0" layoutY="295.0" mnemonicParsing="false" onAction="#deleteArzt" prefHeight="25.0" prefWidth="84.0" text="Loeschen" />
+        <Text layoutX="82.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID : " />
+        <Text layoutX="82.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name : " />
+        <Text layoutX="82.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NName : " />
+        <Text layoutX="82.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TelNo :" />
+        <Button fx:id="addbtn" layoutX="137.0" layoutY="235.0" mnemonicParsing="false" onAction="#addArzt" prefHeight="25.0" prefWidth="84.0" text="Hinzufuegen" />
+    </children>
+</AnchorPane>

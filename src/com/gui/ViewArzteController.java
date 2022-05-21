@@ -1,6 +1,6 @@
 package com.gui;
 
-import com.company.Patient;
+import com.company.Arzt;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,40 +14,47 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ViewPatientenController implements Initializable {
+public class ViewArzteController implements Initializable {
     @FXML
     public ImageView imageView;
     @FXML
-    public TextField getPatientID;
+    public TextField getArztID;
     @FXML
-    public TextField getPatientName;
+    public TextField getArztName;
     @FXML
-    public Button getPatientenIDbtn;
+    public Button getArzteIDbtn;
+    @FXML
+    public Button getArzteNamebtn;
+    @FXML
+    public TextField arztidtxt;
+    @FXML
+    public TextField nametxt;
+    @FXML
+    public TextField nachnametxt;
+    @FXML
+    public TextField telnotxt;
     @FXML
     public Button refreshbtn;
     @FXML
-    public Button getPatientenNamebtn;
-    public TextField patientidtxt;
-    public TextField nametxt;
-    public TextField nachnametxt;
-    public TextField telnotxt;
     public Button updatebtn;
+    @FXML
     public Button deletebtn;
+    @FXML
     public Button addbtn;
-    PatientDAO pdao = new PatientDAO();
-    ObservableList<Patient> list;
+
+    ArztDAO adao = new ArztDAO();
+    ObservableList<Arzt> list;
 
     @FXML
-    private TableView<Patient> patientView;
+    private TableView<Arzt> arztView;
     @FXML
-    private TableColumn<Patient, String> ids;
+    private TableColumn<Arzt, String> ids;
     @FXML
-    private TableColumn<Patient, String> namen;
+    private TableColumn<Arzt, String> namen;
     @FXML
-    private TableColumn<Patient, String> nachnamen;
+    private TableColumn<Arzt, String> nachnamen;
     @FXML
-    private TableColumn<Patient, String> telefonnummern;
-
+    private TableColumn<Arzt, String> telefonnummern;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,12 +68,10 @@ public class ViewPatientenController implements Initializable {
         nachnamen.setCellValueFactory(new PropertyValueFactory<>("nachname"));
         telefonnummern.setCellValueFactory(new PropertyValueFactory<>("telefonNummer"));
     }
-
     private void loadData() {
-        list = pdao.getPatienten();
-        patientView.getItems().addAll(list);
+        list = adao.getArzte();
+        arztView.getItems().addAll(list);
     }
-
     @FXML
     private void redDashboard(ActionEvent event) {
         try {
@@ -75,42 +80,41 @@ public class ViewPatientenController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
     @FXML
-    private void getPatientenID() {
+    private void getArzteID() {
         int id;
         try {
-            id = Integer.parseInt(getPatientID.getText());
+            id = Integer.parseInt(getArztID.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
             return;
         }
-        list = pdao.getMatchedPatientenID(id);
-        patientView.setItems(list);
-        getPatientID.setText("");
+        list = adao.getMatchedArzt(id);
+        arztView.setItems(list);
+        getArztID.setText("");
     }
 
     @FXML
     private void refreshTabelle() {
-        list = pdao.getPatienten();
+        list = adao.getArzte();
         loadData();
-        patientView.setItems(list);
+        arztView.setItems(list);
     }
 
     @FXML
-    private void getPatientenName() {
-        String name = getPatientName.getText();
-        list = pdao.getMatchedPatientenName(name);
-        list.addAll(pdao.getMatchedPatientenNName(name));
-        patientView.setItems(list);
-        getPatientName.setText("");
+    private void getArzteName() {
+        String name = getArztName.getText();
+        list = adao.getMatchedArzteName(name);
+        list.addAll(adao.getMatchedArzteNName(name));
+        arztView.setItems(list);
+        getArztName.setText("");
     }
 
     @FXML
-    private void addPatient() {
+    private void addArzt() {
         int id;
         try {
-            id = Integer.parseInt(patientidtxt.getText());
+            id = Integer.parseInt(arztidtxt.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
             return;
@@ -121,12 +125,12 @@ public class ViewPatientenController implements Initializable {
         if (id == 0 || name.equals("") || nname.equals("") || tn.equals("")) {
             JOptionPane.showMessageDialog(null, "Einige Felder sind leer!");
         } else {
-            int result = pdao.addPatient(id, name, nname, tn);
-            if (result == -1) JOptionPane.showMessageDialog(null, "Patient existiert!");
+            int result = adao.addArzt(id, name, nname, tn);
+            if (result == -1) JOptionPane.showMessageDialog(null, "Arzt existiert!");
             if (result == 0) {
-                JOptionPane.showMessageDialog(null, "Patient hinzugefuegt!");
+                JOptionPane.showMessageDialog(null, "Arzt hinzugefuegt!");
                 nametxt.setText("");
-                patientidtxt.setText("");
+                arztidtxt.setText("");
                 telnotxt.setText("");
                 nachnametxt.setText("");
                 refreshTabelle();
@@ -135,20 +139,20 @@ public class ViewPatientenController implements Initializable {
     }
 
     @FXML
-    private void deletePatient() {
+    private void deleteArzt() {
         int id;
         try {
-            id = Integer.parseInt(patientidtxt.getText());
+            id = Integer.parseInt(arztidtxt.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
             return;
         }
-        int result = pdao.deletePatient(id);
-        if (result == -1) JOptionPane.showMessageDialog(null, "Patient existiert nicht!");
+        int result = adao.deleteArzt(id);
+        if (result == -1) JOptionPane.showMessageDialog(null, "Arzt existiert nicht!");
         if (result == 0) {
-            JOptionPane.showMessageDialog(null, "Patient geloescht!");
+            JOptionPane.showMessageDialog(null, "Arzt geloescht!");
             nametxt.setText("");
-            patientidtxt.setText("");
+            arztidtxt.setText("");
             telnotxt.setText("");
             nachnametxt.setText("");
             refreshTabelle();
@@ -156,10 +160,10 @@ public class ViewPatientenController implements Initializable {
     }
 
     @FXML
-    private void updatePatient() {
+    private void updateArzt() {
         int id;
         try {
-            id = Integer.parseInt(patientidtxt.getText());
+            id = Integer.parseInt(arztidtxt.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
             return;
@@ -170,12 +174,12 @@ public class ViewPatientenController implements Initializable {
         if (id == 0 || name.equals("") || nname.equals("") || tn.equals("")) {
             JOptionPane.showMessageDialog(null, "Einige Felder sind leer!");
         } else {
-            int result = pdao.updatePatient(id, name, nname, tn);
-            if (result == -1) JOptionPane.showMessageDialog(null, "Patient existiert nicht!");
+            int result = adao.updateArzt(id, name, nname, tn);
+            if (result == -1) JOptionPane.showMessageDialog(null, "Arzt existiert nicht!");
             if (result == 0) {
-                JOptionPane.showMessageDialog(null, "Patient aktualisiert!");
+                JOptionPane.showMessageDialog(null, "Arzt aktualisiert!");
                 nametxt.setText("");
-                patientidtxt.setText("");
+                arztidtxt.setText("");
                 telnotxt.setText("");
                 nachnametxt.setText("");
                 refreshTabelle();
