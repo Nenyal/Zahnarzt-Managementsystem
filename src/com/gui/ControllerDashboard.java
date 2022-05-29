@@ -30,7 +30,7 @@ public class ControllerDashboard {
     @FXML
     void redAddUser(ActionEvent event){
         try {
-            App.changeStage(event, "addUser.fxml", "User hinzufuegen");
+            App.changeStage(event, "benutzerOperationen.fxml", "Benutzer Operationen");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -70,7 +70,11 @@ public class ControllerDashboard {
         }
     }
     @FXML
-    private void redAddArzt(){
-
+    private void redOperationen(ActionEvent event){
+        try {
+            App.changeStage(event,"operationen.fxml","ZahnarztAPP");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

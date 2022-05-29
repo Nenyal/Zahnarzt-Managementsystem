@@ -17,6 +17,18 @@ public class UserDAO {
 
     Database db = new Database();
 
+    public boolean userExists(int id){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = db.getConnection();
+            pst = con.prepareStatement("SELECT * FROM user WHERE UserID=?");
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            return rs.next();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public User getUserObjekt(String uname, String pass) {
         if (uname.equals("") || pass.equals("")) {
             return null;
@@ -62,6 +74,41 @@ public class UserDAO {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public int deleteUser(int id){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = db.getConnection();
+            if (!userExists(id)) return -1;
+            else {
+                pst = con.prepareStatement("DELETE FROM user WHERE UserID=?");
+                pst.setInt(1,id);
+                pst.executeUpdate();
+                return 0;
+            }
+        } catch (ClassNotFoundException | SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int updateUser(int id, String un, String pass){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = db.getConnection();
+            if (!userExists(id)){
+                return -1;
+            } else {
+                pst = con.prepareStatement("UPDATE user SET username=?, password=? WHERE (UserID=?)");
+                pst.setString(1,un);
+                pst.setString(2,pass);
+                pst.setInt(3,id);
+                pst.executeUpdate();
+                return 0;
+            }
+        } catch (ClassNotFoundException | SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
 

@@ -1,7 +1,9 @@
 package com.company;
 
+import javafx.beans.value.ObservableValue;
+
 public class Operation {
-    private final int id;
+    private int id;
     private String name;
     private float kost;
 
@@ -13,6 +15,14 @@ public class Operation {
 
     public int getId() {
         return id;
+    }
+
+    public float getKost() {
+        return kost;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void editOperation(float kost) {
