@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: RGB(230,230,230);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.OperationenController">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="80.0" style="-fx-background-color: RGB(7,16,80);" />
+        <ImageView fx:id="imageView" fitHeight="380.0" fitWidth="380.0" layoutX="115.0" layoutY="16.0" opacity="0.2">
+            <image>
+                <Image url="@img/dentist.png" />
+            </image>
+        </ImageView>
+        <TableView fx:id="operationenView" layoutX="229.0" layoutY="77.0" opacity="0.9" prefHeight="277.0" prefWidth="361.0">
+            <columns>
+                <TableColumn fx:id="ids" prefWidth="72.0" text="ID" />
+                <TableColumn fx:id="namen" minWidth="0.0" prefWidth="173.0" text="Name" />
+                <TableColumn fx:id="kosten" minWidth="0.0" prefWidth="115.0" text="Kost" />
+            </columns>
+        </TableView>
+        <Button layoutX="450.0" layoutY="365.0" mnemonicParsing="false" onAction="#redDashboard" text="Zurück zum Dashboard" />
+        <TextField fx:id="getopidtxt" layoutX="250.0" layoutY="47.0" prefHeight="25.0" prefWidth="65.0" promptText="OpID" />
+        <Button fx:id="getOpIDbtn" layoutX="320.0" layoutY="47.0" mnemonicParsing="false" onAction="#getOperationenID" prefHeight="25.0" prefWidth="48.0" text="Suche" />
+        <Text layoutX="229.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID : " />
+        <VBox layoutX="129.0" layoutY="120.0" prefHeight="69.0" prefWidth="100.0" spacing="4.0">
+            <children>
+                <TextField fx:id="opidtxt" promptText="OperationID" />
+                <TextField fx:id="nametxt" promptText="OpName" />
+                <TextField fx:id="kosttxt" prefHeight="25.0" prefWidth="131.0" promptText="Kost" />
+            </children>
+        </VBox>
+        <Button fx:id="refreshbtn" layoutX="229.0" layoutY="365.0" mnemonicParsing="false" onAction="#refreshTabelle" prefHeight="25.0" prefWidth="131.0" text="Tabelle auffrischen" />
+        <Button fx:id="updatebtn" layoutX="137.0" layoutY="236.0" mnemonicParsing="false" onAction="#updateOperation" prefHeight="25.0" prefWidth="84.0" text="Aktualisieren" />
+        <Button fx:id="deletebtn" layoutX="137.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteOperation" prefHeight="25.0" prefWidth="84.0" text="Loeschen" />
+        <Text layoutX="82.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OpID :" />
+        <Text layoutX="82.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" />
+        <Text layoutX="82.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kost :" />
+        <Button fx:id="addbtn" layoutX="137.0" layoutY="206.0" mnemonicParsing="false" onAction="#addOperation" prefHeight="25.0" prefWidth="84.0" text="Hinzufuegen" />
+      <TextField fx:id="getopnametxt" layoutX="431.0" layoutY="47.0" prefHeight="25.0" prefWidth="65.0" promptText="OpName" />
+      <Button fx:id="getOpNamebtn1" layoutX="501.0" layoutY="47.0" mnemonicParsing="false" onAction="#getOperationenName" prefHeight="25.0" prefWidth="48.0" text="Suche" />
+      <Text layoutX="391.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" />
+    </children>
+</AnchorPane>

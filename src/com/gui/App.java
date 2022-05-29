@@ -12,8 +12,8 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Login.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("terminOperationen.fxml")); @@@@@@@@ TEST
+        //FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("operationen.fxml")); //@@@@@@@@ TEST
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("ZahnarztklinikAPP");
         stage.setScene(scene);
