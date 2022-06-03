@@ -20,14 +20,6 @@ public class ControllerDashboard {
     public Button redLoginbtn;
 
     @FXML
-    void redaddpatient(ActionEvent event) {
-        try {
-            App.changeStage(event, "addPatient.fxml", "Patient hinzufuegen");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
     void redAddUser(ActionEvent event){
         try {
             App.changeStage(event, "benutzerOperationen.fxml", "Benutzer Operationen");
@@ -44,7 +36,22 @@ public class ControllerDashboard {
         }
     }
 
-
+    @FXML
+    void redChangePassword(ActionEvent event){
+        try {
+            App.changeStage(event, "changePassword.fxml", "Passwort aendern");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    void redBehandlungen(ActionEvent event){
+        try {
+            App.changeStage(event, "behandlungoperationen.fxml", "Passwort aendern");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void redpatienten(ActionEvent event) {
         try {

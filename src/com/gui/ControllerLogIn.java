@@ -30,12 +30,27 @@ public class ControllerLogIn implements Initializable {
     @FXML
     public ImageView imageView;
 
+    private static boolean admin;
+
+    private static User user;
+
+    public static User getUser(){
+        return user;
+    }
+    public static boolean isAdmin() {
+        return user.getPermission().equals("admin");
+    }
+    public static void setAdmin(boolean b){
+        if (b) user.setPermission("admin");
+        else user.setPermission("user");
+    }
+
     @FXML
     void login(ActionEvent event) {
         String uname = txtuname.getText();
         String pass = txtpass.getText();
         UserDAO udao = new UserDAO();
-        User user = udao.getUserObjekt(uname, pass);
+        user = udao.getUserObjekt(uname, pass);
         if (user == null) {
             JOptionPane.showMessageDialog(null, "Fehler beim Einloggen!");
             txtuname.setText("");
@@ -43,10 +58,13 @@ public class ControllerLogIn implements Initializable {
             txtuname.requestFocus();
         } else {
             try {
+                System.out.println(user.getId()+" "+user.getUsername()+" "+user.getPassword()+" "+user.getPermission());
                 if (user.getPermission().equals("admin")) {
+                    ControllerLogIn.setAdmin(true);
                     App.changeStage(event, "Dashboard.fxml", "ZahnarztAPP Dashboard");
-                } else {    // FARKLI SAYFAYA YONLENDIRECEK @@@
-                    App.changeStage(event, "Dashboard.fxml", "ZahnarztAPP Dashboard");
+                } else {
+                    ControllerLogIn.setAdmin(false);
+                    App.changeStage(event, "DashboardArzt.fxml", "ZahnarztAPP Dashboard");
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

@@ -41,7 +41,7 @@ public class UserDAO {
                 pst.setString(2, pass);
                 rs = pst.executeQuery();
                 if (rs.next()) {
-                    return new User(uname, pass, rs.getString(3));
+                    return new User(rs.getInt(1),uname, pass, rs.getString(4));
                 } else {
                     return null;
                 }
@@ -103,6 +103,24 @@ public class UserDAO {
                 pst.setString(1,un);
                 pst.setString(2,pass);
                 pst.setInt(3,id);
+                pst.executeUpdate();
+                return 0;
+            }
+        } catch (ClassNotFoundException | SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int changePasswordID(int id, String neuPass){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = db.getConnection();
+            if (!userExists(id)){
+                return -1;
+            } else {
+                pst = con.prepareStatement("UPDATE user SET password=? WHERE (UserID=?)");
+                pst.setString(1,neuPass);
+                pst.setInt(2,id);
                 pst.executeUpdate();
                 return 0;
             }
