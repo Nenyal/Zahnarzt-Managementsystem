@@ -1,5 +1,6 @@
 package com.gui;
 
+import com.company.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,6 +37,10 @@ public class BenutzerOpsController implements Initializable {
     public Button deleteuserbtn;
     @FXML
     public Button updateuserbtn;
+    @FXML
+    public PasswordField neuPass;
+    @FXML
+    public Button changepasswordbtn;
 
     UserDAO udao = new UserDAO();
 
@@ -117,7 +122,6 @@ public class BenutzerOpsController implements Initializable {
                 passworduser.setText("");
             }
         }
-
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

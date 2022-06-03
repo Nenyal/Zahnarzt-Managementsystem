@@ -1,15 +1,21 @@
 package com.company;
 
 public class User {
+    private int id;
     private String username;
     private String password;
 
     private String permission;  // "admin" (Rezeptionist) oder "user" (Arzt)
 
-    public User(String username, String password, String permission) {
+    public User(int id, String username, String password, String permission) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.permission = permission;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getUsername() {

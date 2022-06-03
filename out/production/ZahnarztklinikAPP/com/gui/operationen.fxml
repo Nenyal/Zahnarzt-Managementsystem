@@ -20,9 +20,9 @@
         </ImageView>
         <TableView fx:id="operationenView" layoutX="229.0" layoutY="77.0" opacity="0.9" prefHeight="277.0" prefWidth="361.0">
             <columns>
-                <TableColumn fx:id="ids" prefWidth="30.0" text="ID" />
-                <TableColumn fx:id="namen" minWidth="0.0" prefWidth="223.0" text="Name" />
-                <TableColumn fx:id="kosten" minWidth="0.0" prefWidth="107.0" text="Kost" />
+                <TableColumn fx:id="ids" prefWidth="72.0" text="ID" />
+                <TableColumn fx:id="namen" minWidth="0.0" prefWidth="173.0" text="Name" />
+                <TableColumn fx:id="kosten" minWidth="0.0" prefWidth="115.0" text="Kost" />
             </columns>
         </TableView>
         <Button layoutX="450.0" layoutY="365.0" mnemonicParsing="false" onAction="#redDashboard" text="Zurück zum Dashboard" />
