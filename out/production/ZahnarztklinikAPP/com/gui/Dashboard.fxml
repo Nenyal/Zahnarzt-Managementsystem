@@ -16,11 +16,11 @@
             <Image url="@img/dentist.png" />
          </image>
       </ImageView>
-      <Button fx:id="showpatientenbtn" layoutX="225.0" layoutY="140.0" mnemonicParsing="false" onAction="#redpatienten" opacity="0.9" prefHeight="25.0" prefWidth="151.0" text="Patienten ansehen">
+      <Button fx:id="showpatientenbtn" layoutX="225.0" layoutY="140.0" mnemonicParsing="false" onAction="#redpatienten" opacity="0.9" prefHeight="25.0" prefWidth="151.0" text="Patient Operationen">
          <font>
             <Font name="Century Gothic" size="13.0" />
          </font></Button>
-      <Button fx:id="adduserbtn" layoutX="225.0" layoutY="210.0" mnemonicParsing="false" onAction="#redAddUser" opacity="0.9" prefHeight="25.0" prefWidth="151.0" text="User hinzufuegen">
+      <Button fx:id="adduserbtn" layoutX="225.0" layoutY="315.0" mnemonicParsing="false" onAction="#redAddUser" opacity="0.9" prefHeight="25.0" prefWidth="151.0" text="User Operationen">
          <font>
             <Font name="Century Gothic" size="13.0" />
          </font></Button>
@@ -30,9 +30,21 @@
          </font>
       </Text>
       <Button fx:id="redLoginbtn" layoutX="475.0" layoutY="360.0" mnemonicParsing="false" onAction="#redLogin" text="Zurück zum Login" />
-      <Button layoutX="225.0" layoutY="175.0" mnemonicParsing="false" onAction="#redarzte" prefHeight="25.0" prefWidth="151.0" text="Aerzte ansehen" />
-      <Button fx:id="terminErstellenbtn" layoutX="225.0" layoutY="245.0" mnemonicParsing="false" onAction="#redTerminErstellen" prefHeight="24.0" prefWidth="151.0" text="Termin erstellen" />
-      <Button fx:id="operationenbtn" layoutX="225.0" layoutY="280.0" mnemonicParsing="false" onAction="#redOperationen" prefHeight="25.0" prefWidth="151.0" text="Operationen" />
-      <Button layoutX="225.0" layoutY="315.0" mnemonicParsing="false" onAction="#redBehandlungen" prefHeight="25.0" prefWidth="151.0" text="Behandlungen" />
+      <Button layoutX="225.0" layoutY="175.0" mnemonicParsing="false" onAction="#redarzte" prefHeight="25.0" prefWidth="151.0" text="Arzt Operationen">
+         <font>
+            <Font name="Century Gothic" size="13.0" />
+         </font></Button>
+      <Button fx:id="terminErstellenbtn" layoutX="225.0" layoutY="280.0" mnemonicParsing="false" onAction="#redTerminErstellen" prefHeight="25.0" prefWidth="151.0" text="Termine">
+         <font>
+            <Font name="Century Gothic" size="13.0" />
+         </font></Button>
+      <Button fx:id="operationenbtn" layoutX="225.0" layoutY="210.0" mnemonicParsing="false" onAction="#redOperationen" prefHeight="25.0" prefWidth="151.0" text="Operationen">
+         <font>
+            <Font name="Century Gothic" size="13.0" />
+         </font></Button>
+      <Button layoutX="225.0" layoutY="245.0" mnemonicParsing="false" onAction="#redBehandlungen" prefHeight="25.0" prefWidth="151.0" text="Behandlungen?">
+         <font>
+            <Font name="Century Gothic" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

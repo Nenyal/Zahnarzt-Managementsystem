@@ -103,7 +103,7 @@ public class ArztDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = db.getConnection();
-            pst = con.prepareStatement("SELECT * FROM arzt WHERE ArztID=?");
+            pst = con.prepareStatement("SELECT * FROM arzt WHERE Nachname=?");
             return getArzten(nname, patienten);
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
