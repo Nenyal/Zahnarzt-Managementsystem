@@ -1,5 +1,6 @@
 package com.company;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Behandlung {
@@ -8,9 +9,9 @@ public class Behandlung {
     private int opID;
     private int patID;
     private int arztID;
-    private Date datum;
+    private LocalDate datum;
 
-    public Behandlung(int id, String n, int opID, int patID, int arztID, Date datum) {
+    public Behandlung(int id, String n, int opID, int patID, int arztID, LocalDate datum) {
         this.id = id;
         this.notizen = n;
         this.opID = opID;
@@ -23,7 +24,7 @@ public class Behandlung {
         this.arztID = arztID;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(LocalDate datum) {
         this.datum = datum;
     }
 
@@ -51,7 +52,7 @@ public class Behandlung {
         return arztID;
     }
 
-    public Date getDatum() {
+    public LocalDate getDatum() {
         return datum;
     }
 

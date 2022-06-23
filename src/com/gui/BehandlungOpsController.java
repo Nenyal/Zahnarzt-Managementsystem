@@ -1,6 +1,7 @@
 package com.gui;
 
 import com.company.Behandlung;
+import com.company.Operation;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 public class BehandlungOpsController implements Initializable {
     public String[] choices;
     public TextField getBehandlungID;
+    public TextField notizentxt;
     public TextField getBehandlungenName;
     public TextField patientidtxt;
     public TextField nametxt;
@@ -33,6 +35,8 @@ public class BehandlungOpsController implements Initializable {
     public TableColumn<Behandlung, String> datum;
 
     BehandlungDAO bdao = new BehandlungDAO();
+
+    OperationDAO odao = new OperationDAO();
 
     ObservableList<Behandlung> list;
 
@@ -69,27 +73,122 @@ public class BehandlungOpsController implements Initializable {
     }
     @FXML
     public void updateBehandlung(){
+        if (datePicker.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Waehlen Sie ein Datum!");
+            return;
+        }
+        LocalDate date = datePicker.getValue();
+        int pid;
+        int aid;
+        try {
+            pid = Integer.parseInt(patientidtxt.getText());
+            aid = Integer.parseInt(arztidtxt.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
+            return;
+        }
+        String not = notizentxt.getText();
+        Operation op = odao.getOpsName(choiceOp.getValue());
 
+        int result = bdao.updateBehandlungen(not, op.getId(),pid,aid,date);
+        if (result == -1) JOptionPane.showMessageDialog(null, "Fehler beim Aktualisieren");
+        if (result == 0) {
+            JOptionPane.showMessageDialog(null, "Behandlung aktualisiert!");
+            notizentxt.setText("");
+            arztidtxt.setText("");
+            patientidtxt.setText("");
+            refreshTabelle();
+        }
+        refreshTabelle();
     }
     @FXML
     public void deleteBehandlung(){
-
+        if (datePicker.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Waehlen Sie ein Datum!");
+            return;
+        }
+        LocalDate date = datePicker.getValue();
+        int pid;
+        int aid;
+        try {
+            pid = Integer.parseInt(patientidtxt.getText());
+            aid = Integer.parseInt(arztidtxt.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
+            return;
+        }
+        Operation op = odao.getOpsName(choiceOp.getValue());
+        String not = notizentxt.getText();
+        int result = bdao.deleteBehandlung(op.getId(),pid,aid,date);
+        if (result == -1) JOptionPane.showMessageDialog(null, "Fehler beim Loeschen!");
+        if (result == 0) {
+            JOptionPane.showMessageDialog(null, "Behandlung geloescht!");
+            notizentxt.setText("");
+            arztidtxt.setText("");
+            patientidtxt.setText("");
+            refreshTabelle();
+        }
     }
     @FXML
     public void addBehandlung(){
-
+        if (datePicker.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Waehlen Sie ein Datum!");
+            return;
+        }
+        LocalDate date = datePicker.getValue();
+        int pid;
+        int aid;
+        try {
+            pid = Integer.parseInt(patientidtxt.getText());
+            aid = Integer.parseInt(arztidtxt.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
+            return;
+        }
+        Operation op = odao.getOpsName(choiceOp.getValue());
+        String not = notizentxt.getText();
+        int result = bdao.behandlungErstellen(not,op.getId(),pid,aid,date);
+        if (result == -1) JOptionPane.showMessageDialog(null, "Fehler beim Hinzufuegen!");
+        if (result == 0) {
+            JOptionPane.showMessageDialog(null, "Behandlung hinzugefuegt!");
+            notizentxt.setText("");
+            arztidtxt.setText("");
+            patientidtxt.setText("");
+            refreshTabelle();
+        }
     }
     @FXML
-    public void redDashboard(){
+    public void redDashboard(ActionEvent event){
+        try {
+            if (ControllerLogIn.isAdmin()){
+                App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            } else {
+                App.changeStage(event, "DashboardArzt.fxml", "Dashboard");
+            }
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     @FXML
     public void getBehandlungenID(){
-
+        int pid;
+        try {
+            pid = Integer.parseInt(getBehandlungID.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
+            return;
+        }
+        list = bdao.getMatchedPatientID(pid);
+        behandlungView.setItems(list);
+        getBehandlungID.setText("");
     }
     @FXML
     public void getBehandlungenName(){
-
+        String s = getBehandlungenName.getText();
+        list = bdao.getMatchedBehandlungName(s);
+        behandlungView.setItems(list);
+        getBehandlungID.setText("");
     }
 }
 

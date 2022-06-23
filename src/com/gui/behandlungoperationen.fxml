@@ -39,7 +39,7 @@
         <VBox layoutX="115.0" layoutY="125.0" prefHeight="113.0" prefWidth="100.0" spacing="4.0">
             <children>
                 <TextField fx:id="patientidtxt" promptText="PatientID" />
-                <TextField fx:id="nametxt" promptText="Name" />
+                <TextField fx:id="notizentxt" promptText="Notizen" />
                 <ChoiceBox fx:id="choiceOp" prefWidth="150.0" />
                 <TextField fx:id="arztidtxt" prefHeight="25.0" prefWidth="100.0" promptText="ArztID" />
                 <DatePicker fx:id="datePicker" />

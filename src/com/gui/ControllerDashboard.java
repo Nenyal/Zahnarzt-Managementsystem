@@ -9,8 +9,6 @@ import java.io.IOException;
 
 public class ControllerDashboard {
     @FXML
-    public Button redaddpatientbtn;
-    @FXML
     public Button showpatientenbtn;
     @FXML
     public Button adduserbtn;
@@ -30,7 +28,8 @@ public class ControllerDashboard {
     @FXML
     void redarzte(ActionEvent event) {
         try {
-            App.changeStage(event, "viewArzte.fxml", "Arzte ansehen");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event, "viewArzte.fxml", "Arzte");
+            else App.changeStage(event, "viewArzteArzt.fxml", "Arzte");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -47,7 +46,7 @@ public class ControllerDashboard {
     @FXML
     void redBehandlungen(ActionEvent event){
         try {
-            App.changeStage(event, "behandlungoperationen.fxml", "Passwort aendern");
+            App.changeStage(event, "behandlungoperationen.fxml", "Behandlungen");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -55,7 +54,8 @@ public class ControllerDashboard {
     @FXML
     void redpatienten(ActionEvent event) {
         try {
-            App.changeStage(event, "viewPatienten.fxml", "Patienten ansehen");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event, "viewPatienten.fxml", "Patienten");
+            else App.changeStage(event, "viewPatientenArzt.fxml", "Patienten");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +71,8 @@ public class ControllerDashboard {
     @FXML
     private void redTerminErstellen(ActionEvent event){
         try {
-            App.changeStage(event,"terminOperationen.fxml","ZahnarztAPP");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event,"terminOperationen.fxml","Termine");
+            else App.changeStage(event,"terminOperationenArzt.fxml","Termine");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -79,7 +80,8 @@ public class ControllerDashboard {
     @FXML
     private void redOperationen(ActionEvent event){
         try {
-            App.changeStage(event,"operationen.fxml","ZahnarztAPP");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event,"operationen.fxml","Operationen");
+            else App.changeStage(event,"operationenArzt.fxml","Operationen");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
