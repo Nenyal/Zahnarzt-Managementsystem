@@ -1,6 +1,6 @@
 package com.gui;
 
-import com.company.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,9 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import javax.swing.*;
-
-import javafx.event.ActionEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -76,7 +73,8 @@ public class BenutzerOpsController implements Initializable {
     @FXML
     void redDashboard(ActionEvent event) {
         try {
-            App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            else App.changeStage(event, "DashboardArzt.fxml", "Dashboard");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -111,7 +109,7 @@ public class BenutzerOpsController implements Initializable {
         }
         String un = usernametxt.getText();
         String pass = passworduser.getText();
-        if (id == 0 || usernametxt.equals("") || passworduser.equals("")) JOptionPane.showMessageDialog(null, "Einige Felder sind leer!");
+        if (id == 0 || usernametxt.getText().equals("") || passworduser.getText().equals("")) JOptionPane.showMessageDialog(null, "Einige Felder sind leer!");
         else {
             int result = udao.updateUser(id,un,pass);
             if (result == -1) JOptionPane.showMessageDialog(null, "Benutzer existiert nicht!");

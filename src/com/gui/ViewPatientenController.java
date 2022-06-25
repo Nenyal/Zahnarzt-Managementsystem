@@ -199,11 +199,4 @@ public class ViewPatientenController implements Initializable {
         }
 
     }
-    @FXML
-    public void etwas(){
-        //TableView.TableViewSelectionModel<Patient> selectionModel = patientView.getSelectionModel();
-        //ObservableList<Patient> selectedItems = selectionModel.getSelectedItems();
-        System.out.println(patientView.getSelectionModel().getSelectedItem());
-
-    }
 }

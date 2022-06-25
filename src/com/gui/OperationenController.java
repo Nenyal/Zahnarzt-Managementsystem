@@ -180,8 +180,5 @@ public class OperationenController implements Initializable {
             kosttxt.setText("");
             refreshTabelle();
         }
-
-
     }
-
 }

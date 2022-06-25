@@ -25,8 +25,8 @@
                 <TableColumn fx:id="notizen" prefWidth="176.0" text="Notiz" />
                 <TableColumn fx:id="pids" prefWidth="37.0" text="PID" />
                 <TableColumn fx:id="oids" minWidth="0.0" prefWidth="35.0" text="OID" />
-                <TableColumn fx:id="aids" minWidth="0.0" prefWidth="39.0" text="AID" />
-                <TableColumn fx:id="datum" prefWidth="81.0" text="Datum" />
+                <TableColumn fx:id="aids" minWidth="0.0" prefWidth="38.0" text="AID" />
+                <TableColumn fx:id="datum" prefWidth="99.0" text="Datum" />
             </columns>
         </TableView>
         <Button layoutX="450.0" layoutY="365.0" mnemonicParsing="false" onAction="#redDashboard" text="Zurück zum Dashboard" />

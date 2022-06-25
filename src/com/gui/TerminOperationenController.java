@@ -76,7 +76,8 @@ public class TerminOperationenController implements Initializable {
     @FXML
     public void redDashboard(ActionEvent event) {
         try {
-            App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            else App.changeStage(event, "DashboardArzt.fxml", "Dashboard");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -134,18 +135,8 @@ public class TerminOperationenController implements Initializable {
         }
         LocalDate date = terminDatePicker.getValue();
         LocalTime zeit = LocalTime.parse(zeittxt.getText());
-        /*
-        int aid, pid;
-        try {
-            aid = Integer.parseInt(arztidtxt.getText());
-            pid = Integer.parseInt(patientidtxt.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ID nicht gueltig!");
-            return;
-        }*/
         Termin t = terminView.getSelectionModel().getSelectedItem();
         int result = tdao.updateTermin(t.getDatum(), t.getZeit(), t.getArztID(), t.getPatientID(), date, zeit);
-        //int result = tdao.updateTermin(date, zeit, aid, pid);
         if (result == -1) JOptionPane.showMessageDialog(null, "Fehler beim Aktualisieren");
         if (result == 0) {
             JOptionPane.showMessageDialog(null, "Termin aktualisiert!");

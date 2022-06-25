@@ -13,25 +13,38 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class BehandlungOpsController implements Initializable {
+    @FXML
     public String[] choices;
+    @FXML
     public TextField getBehandlungID;
+    @FXML
     public TextField notizentxt;
+    @FXML
     public TextField getBehandlungenName;
+    @FXML
     public TextField patientidtxt;
+    @FXML
     public TextField nametxt;
+    @FXML
     public ChoiceBox<String> choiceOp;
+    @FXML
     public TextField arztidtxt;
+    @FXML
     public DatePicker datePicker;
+    @FXML
     public TableView<Behandlung> behandlungView;
-    //public TableColumn<Behandlung, String> ids;
+    @FXML
     public TableColumn<Behandlung, String> notizen;
+    @FXML
     public TableColumn<Behandlung, String> oids;
+    @FXML
     public TableColumn<Behandlung, String> pids;
+    @FXML
     public TableColumn<Behandlung, String> aids;
+    @FXML
     public TableColumn<Behandlung, String> datum;
 
     BehandlungDAO bdao = new BehandlungDAO();
