@@ -18,7 +18,7 @@
                 <Image url="@img/dentist.png" />
             </image>
         </ImageView>
-        <TableView fx:id="patientView" layoutX="91.0" layoutY="77.0" onMouseClicked="#etwas" opacity="0.9" prefHeight="275.0" prefWidth="500.0">
+        <TableView fx:id="patientView" layoutX="91.0" layoutY="77.0" opacity="0.9" prefHeight="275.0" prefWidth="500.0">
             <columns>
                 <TableColumn fx:id="ids" prefWidth="30.0" text="ID" />
                 <TableColumn fx:id="namen" prefWidth="100.0" text="Name" />

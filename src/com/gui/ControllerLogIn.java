@@ -30,8 +30,6 @@ public class ControllerLogIn implements Initializable {
     @FXML
     public ImageView imageView;
 
-    private static boolean admin;
-
     private static User user;
 
     public static User getUser(){
@@ -58,7 +56,6 @@ public class ControllerLogIn implements Initializable {
             txtuname.requestFocus();
         } else {
             try {
-                System.out.println(user.getId()+" "+user.getUsername()+" "+user.getPassword()+" "+user.getPermission());
                 if (user.getPermission().equals("admin")) {
                     ControllerLogIn.setAdmin(true);
                     App.changeStage(event, "Dashboard.fxml", "ZahnarztAPP Dashboard");

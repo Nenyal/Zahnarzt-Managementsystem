@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: RGB(230,230,230);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.TerminOperationenController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: RGB(230,230,230);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.TerminOperationenController">
     <children>
         <VBox prefHeight="400.0" prefWidth="80.0" style="-fx-background-color: RGB(7,16,80);" />
         <ImageView fx:id="imageView" fitHeight="380.0" fitWidth="380.0" layoutX="115.0" layoutY="16.0" opacity="0.2">
@@ -21,10 +15,10 @@
         </ImageView>
         <TableView fx:id="terminView" layoutX="86.0" layoutY="79.0" opacity="0.9" prefHeight="277.0" prefWidth="500.0">
             <columns>
-                <TableColumn fx:id="datum" prefWidth="76.0" text="Datum" />
-                <TableColumn fx:id="zeit" prefWidth="54.0" text="Zeit" />
-                <TableColumn fx:id="arzt" minWidth="0.0" prefWidth="120.0" text="Arzt" />
-                <TableColumn fx:id="patient" minWidth="0.0" prefWidth="111.0" text="Patient" />
+                <TableColumn fx:id="datum" prefWidth="108.0" text="Datum" />
+                <TableColumn fx:id="zeit" prefWidth="115.0" text="Zeit" />
+                <TableColumn fx:id="arzt" minWidth="0.0" prefWidth="106.0" text="Arzt" />
+                <TableColumn fx:id="patient" minWidth="0.0" prefWidth="170.0" text="Patient" />
             </columns>
         </TableView>
         <Button layoutX="450.0" layoutY="365.0" mnemonicParsing="false" onAction="#redDashboard" text="Zurück zum Dashboard" />

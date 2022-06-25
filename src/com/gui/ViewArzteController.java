@@ -75,7 +75,8 @@ public class ViewArzteController implements Initializable {
     @FXML
     private void redDashboard(ActionEvent event) {
         try {
-            App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            if (ControllerLogIn.isAdmin()) App.changeStage(event, "Dashboard.fxml", "Dashboard");
+            else App.changeStage(event, "DashboardArzt.fxml", "Dashboard");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -185,6 +186,5 @@ public class ViewArzteController implements Initializable {
                 refreshTabelle();
             }
         }
-
     }
 }
